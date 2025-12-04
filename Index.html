@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>रसायन शास्त्र — pH Scale (Sample)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>pH Scale — एक छोटा परिचय</h1>
+    <p class="subtitle">आसान भाषा में, उदाहरण और एक फ़ार्मूला</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>pH क्या है?</h2>
+      <p>
+        pH किसी घोल में हाइड्रोजन आयनों (H<sup>+</sup>) की सांद्रता का माप है। यह 0 से 14 के स्केल पर दिया जाता है:
+      </p>
+      <ul>
+        <li><strong>pH &lt; 7</strong> → अम्लीय (acidic)</li>
+        <li><strong>pH = 7</strong> → तटस्थ (neutral)</li>
+        <li><strong>pH &gt; 7</strong> → क्षारीय (basic)</li>
+      </ul>
+
+      <h3>गणित (Formula)</h3>
+      <p>pH = −log<sub>10</sub>[H<sup>+</sup>]</p>
+      <p class="example">
+        उदाहरण: यदि [H<sup>+</sup>] = 1×10<sup>−3</sup> M → pH = 3
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>छोटा इंटरैक्टिव (pH कैलकुलेटर)</h2>
+      <label>हाइड्रोजन आयन सांद्रता [H<sup>+</sup>] (M): <input id="hconc" type="text" value="0.001"></label>
+      <button id="calc">pH निकालो</button>
+      <p id="result" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created for testing — अपना content बाद में जोड़ो।</p>
+  </footer>
+
+  <script>
+    document.getElementById('calc').addEventListener('click', function(){
+      const v = parseFloat(document.getElementById('hconc').value);
+      const res = document.getElementById('result');
+      if (!v || v <= 0) {
+        res.textContent = 'कृपया 0 से बड़ा सही मान डालें। उदाहरण: 0.001';
+        return;
+      }
+      const ph = -Math.log10(v);
+      res.textContent = 'Calculated pH = ' + ph.toFixed(3);
+    });
+  </script>
+</body>
+</html>
